@@ -1,0 +1,50 @@
+.fieldItem {
+  display: contents;
+}
+
+.label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+  padding-top: 0.75rem;
+}
+
+.readOnlyField {
+  padding: 0.75rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #111827;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.readOnlyField:hover {
+  background-color: #f3f4f6;
+}
+
+.editingFieldItem {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.editingInputField {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  min-height: 42px;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}

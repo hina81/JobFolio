@@ -1,0 +1,60 @@
+.table {
+  border-spacing: 0 2px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.headerRow {
+  padding: 1.25rem 0.75rem;
+  font-weight: 600;
+  height: 50px;
+}
+
+.tableRow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.tableRow:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cell {
+  padding: 1.25rem 0.75rem;
+  line-height: 1.5;
+}
+
+/* カラム幅の固定 */
+.companyCell {
+  width: 25%;
+}
+
+.positionCell {
+  width: 20%;
+}
+
+.statusCell {
+  width: 100px;
+  text-align: left;
+}
+
+.salaryCell {
+  width: 15%;
+}
+
+.deadlineCell {
+  width: 120px;
+}
+
+.sourceCell {
+  width: 15%;
+}
+
+.actionsCell {
+  width: 80px;
+  text-align: center;
+}

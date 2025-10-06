@@ -1,0 +1,73 @@
+.container {
+  width: 280px;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #e9ecef;
+  padding: 1.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.appDescription {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.filterItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filterItemActive {
+  background-color: #e3f2fd;
+  font-weight: 600;
+}
+
+.filterItemInactive {
+  background-color: transparent;
+  font-weight: normal;
+}
+
+.filterLabel {
+  font-size: 0.9rem;
+}
+
+.buttonContainer {
+  margin-bottom: 1rem;
+}
+
+.buttonContainer button {
+  width: 100%;
+}
+
+.filterItem:hover:not(.filterItemActive) {
+  background-color: #f8f9fa;
+}
+
+.filterItemActive:hover {
+  background-color: #e3f2fd;
+}

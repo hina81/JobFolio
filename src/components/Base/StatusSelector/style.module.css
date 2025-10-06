@@ -1,0 +1,34 @@
+.dropdownContent {
+  min-width: 200px;
+  max-width: 250px;
+  padding: 8px 0;
+}
+
+.dropdownItem {
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background-color: #f8f9fa;
+}
+
+.badgeContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.plusIcon {
+  font-size: 12px;
+}
