@@ -12,7 +12,7 @@ import { useJobs } from "../hooks/useJob";
 import { Sidebar } from "../components/Layout/Sidebar";
 
 export const DashboardPage = () => {
-  const { jobData, isLoading, updateStatus, deleteJob } = useJobs();
+  const { jobData, isLoading, updateStatus, removeJob } = useJobs();
   const [currentFilter, setCurrentFilter] = useState("all");
   const [currentSection, setCurrentSection] = useState("dashboard");
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
@@ -76,7 +76,7 @@ export const DashboardPage = () => {
           job={selectedJob}
           onClose={() => setSelectedJob(null)}
           onDeleteJob={(id) => {
-            deleteJob(id);
+            removeJob(id);
             setSelectedJob(null);
           }}
           onNavigateToDetail={(id) => {

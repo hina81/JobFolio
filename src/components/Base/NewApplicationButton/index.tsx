@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "smarthr-ui";
-import { createNewApplication } from "../../../lib/db";
+import { createNewApplication } from "../../../lib/service/jobService";
 
 interface NewApplicationButtonProps {
   variant?: "primary" | "secondary" | "text";

@@ -16,6 +16,8 @@
     "react-dom": "^19.1.1",
     "react-intl": "^7.1.11",
     "react-router-dom": "^7.9.3",
+    "rxdb": "^16.19.1",
+    "rxjs": "^7.8.2",
     "smarthr-ui": "^76.0.0",
     "styled-components": "^6.1.19",
     "uuid": "^13.0.0",
