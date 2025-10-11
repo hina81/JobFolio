@@ -1,9 +1,13 @@
 import { replicateCouchDB } from "rxdb/plugins/replication-couchdb";
 import { getDB } from ".";
 
-export const replicationState = async () => {
+export const getJobCollection = async () => {
   const db = await getDB();
-  const jobCollection = db.jobs;
+  return db.jobs;
+};
+
+export const replicationState = async () => {
+  const jobCollection = await getJobCollection();
 
   const couchdbUrl = import.meta.env.VITE_COUCHDB_URL;
 
@@ -60,9 +64,7 @@ export const replicationState = async () => {
        * (optional)
        */
       modifier: (docData) => {
-        /* ... */
-        const { notes, ...publicData } = docData;
-        return publicData;
+        return docData;
       },
     },
   });
