@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useJobDetail } from "../hooks/useJobDetail";
 import { StatusSelector } from "../components/Base/StatusSelector";
 import { EditableField } from "../components/Base/EditableField";
-import type { JobStatus } from "../types/types";
-import { useState } from "react";
+import type { Job, JobStatus } from "../types/types";
+import { useCallback, useMemo, useState } from "react";
 
 export const DetailPage = () => {
   const navigate = useNavigate();
@@ -20,6 +20,26 @@ export const DetailPage = () => {
   } = useJobDetail();
 
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
+  const handleFieldChange = useCallback(
+    (field: keyof Job, value: string | JobStatus) => {
+      if (job) {
+        setJob({ ...job, [field]: value });
+      }
+    },
+    [job, setJob]
+  );
+
+  // 各フィールドのpropsをメモ化
+  const fieldProps = useMemo(
+    () => ({
+      onEdit: startEdit,
+      onSave: saveEdit,
+      onCancel: cancelEdit,
+      onChange: handleFieldChange,
+    }),
+    [startEdit, saveEdit, cancelEdit, handleFieldChange]
+  );
 
   const handleDelete = async () => {
     await deleteJob();
@@ -56,10 +76,7 @@ export const DetailPage = () => {
               fieldName="company"
               value={job.company}
               isEditing={editingField === "company"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
               autoFocus={true}
             />
             <EditableField
@@ -67,30 +84,21 @@ export const DetailPage = () => {
               fieldName="position"
               value={job.position || ""}
               isEditing={editingField === "position"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
             <EditableField
               label="想定年収"
               fieldName="salary"
               value={job.salary}
               isEditing={editingField === "salary"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
             <EditableField
               label="応募経路"
               fieldName="source"
               value={job.source}
               isEditing={editingField === "source"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
             <EditableField
               label="応募締切・面接日程"
@@ -98,30 +106,21 @@ export const DetailPage = () => {
               value={job.deadline}
               isEditing={editingField === "deadline"}
               type="date"
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
             <EditableField
               label="応募要件・スキル"
               fieldName="requirements"
               value={job.requirements || ""}
               isEditing={editingField === "requirements"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
             <EditableField
               label="メモ・備考"
               fieldName="notes"
               value={job.notes || ""}
               isEditing={editingField === "notes"}
-              onEdit={startEdit}
-              onSave={saveEdit}
-              onCancel={cancelEdit}
-              onChange={(f, v) => setJob({ ...job, [f]: v })}
+              {...fieldProps}
             />
           </div>
 

@@ -20,6 +20,7 @@
     "rxjs": "^7.8.2",
     "smarthr-ui": "^76.0.0",
     "styled-components": "^6.1.19",
+    "use-debounce": "^10.0.6",
     "uuid": "^13.0.0",
     "zod": "^4.1.11"
   },

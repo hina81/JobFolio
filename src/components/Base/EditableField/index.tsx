@@ -1,12 +1,13 @@
 import { Input, Text } from "smarthr-ui";
 import type { Job, JobStatus } from "../../../types/types";
-
 import styles from "./style.module.css";
 import {
   formatDisplayValue,
   formatInputValue,
   formatSaveValue,
 } from "../../../utils/fieldUtils";
+import { useEffect, useState, useRef } from "react";
+import { useDebounce } from "use-debounce";
 
 interface EditableFieldProps {
   label: string;
@@ -38,6 +39,61 @@ export const EditableField = ({
   const displayValue = formatDisplayValue(value);
   const inputValue = formatInputValue(value);
 
+  // ローカル状態を管理
+  const [localValue, setLocalValue] = useState(inputValue);
+  const [debouncedValue] = useDebounce(localValue, 500);
+
+  // 初回実行を防ぐためのref
+  const isInitialMount = useRef(true);
+
+  // 外部からのvalue変更時にローカル状態を同期
+  useEffect(() => {
+    setLocalValue(inputValue);
+  }, [inputValue]);
+
+  // デバウンス後の処理（初回実行を除く）
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    // 元の値と異なる場合のみonChangeを呼ぶ
+    if (debouncedValue !== inputValue) {
+      const newValue = formatSaveValue(debouncedValue);
+      onChange(fieldName, newValue);
+    }
+  }, [debouncedValue, fieldName, onChange, inputValue]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalValue(e.target.value);
+  };
+
+  const handleBlur = () => {
+    // Blur時は最新のローカル値で保存
+    const newValue = formatSaveValue(localValue);
+    if (newValue !== formatSaveValue(inputValue)) {
+      onChange(fieldName, newValue);
+    }
+    onSave(fieldName);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      // Enter時は最新のローカル値で保存
+      const newValue = formatSaveValue(localValue);
+      if (newValue !== formatSaveValue(inputValue)) {
+        onChange(fieldName, newValue);
+      }
+      onSave(fieldName);
+    }
+    if (e.key === "Escape") {
+      // Escape時は元の値に戻す
+      setLocalValue(inputValue);
+      onCancel(fieldName);
+    }
+  };
+
   return (
     <div
       className={`${styles.fieldItem} ${
@@ -51,16 +107,10 @@ export const EditableField = ({
         <Input
           ref={inputRef}
           type={type}
-          value={inputValue}
-          onChange={(e) => {
-            const newValue = formatSaveValue(e.target.value);
-            onChange(fieldName, newValue);
-          }}
-          onBlur={() => onSave(fieldName)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") onSave(fieldName);
-            if (e.key === "Escape") onCancel(fieldName);
-          }}
+          value={localValue} // ローカル状態を表示
+          onChange={handleInputChange}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           autoFocus={autoFocus}
           className={styles.editingInputField}
         />
