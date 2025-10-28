@@ -1,8 +1,16 @@
-import { Stack, Heading, Badge, Text } from "smarthr-ui";
-import { NewApplicationButton } from "../../Base/NewApplicationButton";
+import {
+  Stack,
+  Heading,
+  Badge,
+  Text,
+  FaUpRightFromSquareIcon,
+} from "smarthr-ui";
+import { NewApplicationButton } from "../../../components/Base/NewApplicationButton";
 import type { Job } from "../../../types/types";
 import { STATUS_CATEGORIES } from "../../../types/types";
 import style from "./style.module.css";
+import { useNavigate } from "react-router-dom";
+import { useFirebaseAuthContext } from "../../../hooks/useFirebaseAuthContext";
 
 interface SidebarProps {
   jobData: Job[];
@@ -17,7 +25,10 @@ export const Sidebar = ({
   onFilterByStatus,
   currentFilter = "all",
 }: SidebarProps) => {
-  // ステータス別の統計を動的に計算
+  const navigate = useNavigate();
+  const { currentUser } = useFirebaseAuthContext();
+
+  // ステータス別の統計
   const getStatusCount = (categoryKey: string) => {
     if (categoryKey === "all") {
       return jobData.length;
@@ -75,7 +86,28 @@ export const Sidebar = ({
             ))}
           </Stack>
         </div>
+
+        <div>
+          <Text className={style.sectionTitle}>その他</Text>
+          <Stack gap={0.25}>
+            <div
+              onClick={() => navigate("/schedule")}
+              className={style.filterItem}
+            >
+              <Text className={style.filterLabel}>日程調整アシスタント</Text>
+              <FaUpRightFromSquareIcon />
+            </div>
+          </Stack>
+        </div>
       </Stack>
+      {currentUser && (
+        <div className={style.userInfo}>
+          <Text size="s">{currentUser.displayName}</Text>
+          <Text size="xs" color="gray">
+            {currentUser.email}
+          </Text>
+        </div>
+      )}
     </div>
   );
 };

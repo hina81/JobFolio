@@ -1,15 +1,16 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Stack, Heading, Table, Base } from "smarthr-ui";
-import { TableActions } from "../components/Table/TableActions";
-import { JobTable } from "../components/Table/JobTable";
-import { JobTableHeader } from "../components/Table/JobTableHeader";
+
+import { JobTable } from "../features/table/components/JobTable";
+import { JobTableHeader } from "../features/table/components/JobTableHeader";
 import { EmptyState } from "../components/PageState/EmptyState";
-import { JobDetailPanel } from "../components/JobDetailPanel";
+import { JobDetailPanel } from "../features/jobDetail/JobDetailPanel";
 import { filterJobs } from "../utils/jobFilter";
 import type { Job } from "../types/types";
 import { useJobs } from "../hooks/useJob";
-import { Sidebar } from "../components/Layout/Sidebar";
+import { Sidebar } from "../features/sidebar/Sidebar";
+import { TableActions } from "../features/table/TableActions";
 
 export const DashboardPage = () => {
   const { jobData, isLoading, updateStatus, removeJob } = useJobs();

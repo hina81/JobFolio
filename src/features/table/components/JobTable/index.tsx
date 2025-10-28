@@ -1,7 +1,7 @@
 import { Table, Td } from "smarthr-ui";
 import style from "./style.module.css";
-import type { Job, JobStatus } from "../../../types/types";
-import { StatusSelector } from "../../Base/StatusSelector";
+import type { Job, JobStatus } from "../../../../types/types";
+import { StatusSelector } from "../../../../components/Base/StatusSelector";
 import { JobTableHeader } from "../JobTableHeader";
 
 interface JobTableProps {

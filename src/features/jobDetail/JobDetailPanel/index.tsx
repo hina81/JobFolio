@@ -7,8 +7,8 @@ import {
   FaUpRightAndDownLeftFromCenterIcon,
   FaAnglesRightIcon,
 } from "smarthr-ui";
-import type { Job } from "../../types/types";
-import { ReadOnlyField } from "../Base/ReadOnlyField";
+import type { Job } from "../../../types/types";
+import { ReadOnlyField } from "../../../components/Base/ReadOnlyField";
 import styles from "./style.module.css";
 
 interface JobDetailPanelProps {
