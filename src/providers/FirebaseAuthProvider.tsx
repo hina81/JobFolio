@@ -15,7 +15,7 @@ import { auth } from "../lib/firebase";
 import { LoadingCover } from "../components/Base/Loading";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const nonAuthPaths = ["/", "/login", "/signup"];
+const nonAuthPaths = ["/", "/login"];
 const provider = new GoogleAuthProvider();
 
 const FirebaseAuthContext = createContext<{
@@ -79,13 +79,12 @@ const FirebaseAuthProvider = ({
 
   const login = async () => {
     await signInWithPopup(auth, provider);
-    // const user = result.user;
     navigate("/");
   };
 
   const logout = useCallback(async () => {
     await signOut(auth);
-    navigate("/login");
+    navigate("/");
   }, [navigate]);
 
   return (

@@ -10,7 +10,7 @@ import type { Job } from "../../../types/types";
 import { STATUS_CATEGORIES } from "../../../types/types";
 import style from "./style.module.css";
 import { useNavigate } from "react-router-dom";
-import { useFirebaseAuthContext } from "../../../hooks/useFirebaseAuthContext";
+import { AuthStatus } from "../AuthStatus";
 
 interface SidebarProps {
   jobData: Job[];
@@ -26,7 +26,7 @@ export const Sidebar = ({
   currentFilter = "all",
 }: SidebarProps) => {
   const navigate = useNavigate();
-  const { currentUser } = useFirebaseAuthContext();
+  
 
   // ステータス別の統計
   const getStatusCount = (categoryKey: string) => {
@@ -100,14 +100,7 @@ export const Sidebar = ({
           </Stack>
         </div>
       </Stack>
-      {currentUser && (
-        <div className={style.userInfo}>
-          <Text size="s">{currentUser.displayName}</Text>
-          <Text size="xs" color="gray">
-            {currentUser.email}
-          </Text>
-        </div>
-      )}
+      <AuthStatus />
     </div>
   );
 };

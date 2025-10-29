@@ -7,7 +7,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   if (currentUser) {
-    navigate("/schedule");
+    navigate("/");
   }
 
   return <LoginContainer />;

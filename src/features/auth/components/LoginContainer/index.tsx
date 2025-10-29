@@ -4,13 +4,7 @@ import styles from "./style.module.css";
 import { useContext } from "react";
 import { FirebaseAuthContext } from "../../../../providers/FirebaseAuthProvider";
 
-// const Links = () => {
-//   return (
-//     <div className={styles.links}>
-//       <TextLink href="/signup">新規登録はこちら</TextLink>
-//     </div>
-//   );
-// };
+
 
 const Heading = () => {
   return (
