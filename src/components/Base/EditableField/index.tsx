@@ -45,6 +45,8 @@ export const EditableField = ({
 
   // 初回実行を防ぐためのref
   const isInitialMount = useRef(true);
+  // 強制保存フラグ
+  const forceSaveRef = useRef(false);
 
   // 外部からのvalue変更時にローカル状態を同期
   useEffect(() => {
@@ -58,6 +60,11 @@ export const EditableField = ({
       return;
     }
 
+    // 強制保存の場合はスキップ
+    if (forceSaveRef.current) {
+      forceSaveRef.current = false;
+      return;
+    }
     // 元の値と異なる場合のみonChangeを呼ぶ
     if (debouncedValue !== inputValue) {
       const newValue = formatSaveValue(debouncedValue);
@@ -69,23 +76,24 @@ export const EditableField = ({
     setLocalValue(e.target.value);
   };
 
-  const handleBlur = () => {
-    // Blur時は最新のローカル値で保存
+  // 強制保存用の共通処理
+  const performForceSave = () => {
     const newValue = formatSaveValue(localValue);
     if (newValue !== formatSaveValue(inputValue)) {
+      forceSaveRef.current = true; // デバウンス処理をスキップするフラグ
       onChange(fieldName, newValue);
     }
     onSave(fieldName);
   };
 
+  const handleBlur = () => {
+    performForceSave();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      // Enter時は最新のローカル値で保存
-      const newValue = formatSaveValue(localValue);
-      if (newValue !== formatSaveValue(inputValue)) {
-        onChange(fieldName, newValue);
-      }
-      onSave(fieldName);
+      e.preventDefault();
+      performForceSave();
     }
     if (e.key === "Escape") {
       // Escape時は元の値に戻す
