@@ -50,14 +50,16 @@ export const CalendarView = ({
         })}
       </div>
 
-      <CalendarGrid
-        year={year}
-        month={month}
-        daysInMonth={daysInMonth}
-        startingDayOfWeek={startingDayOfWeek}
-        events={events}
-        dateRangeHook={dateRangeHook}
-      />
+      <div className={styles.calendarGrid}>
+        <CalendarGrid
+          year={year}
+          month={month}
+          daysInMonth={daysInMonth}
+          startingDayOfWeek={startingDayOfWeek}
+          events={events}
+          dateRangeHook={dateRangeHook}
+        />
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useCalendar } from "../../hooks/useCalendar";
 import { useDateRange } from "../../hooks/useDateRange";
 import { useScheduleSettings } from "../../hooks/useScheduleSettings";
 import { ScheduleSidebar } from "../ScheduleSidebar";
-import { ResultsView } from "../ResultView";
+import { ResultsModal } from "../ResultsModal";
 import { CalendarView } from "../CalendarView";
 import styles from "./style.module.css";
 
@@ -56,19 +56,13 @@ export const ScheduleContainer = () => {
         <div className={styles.innerContainer}>
           {/* <Heading tag="h1">日程調整アシスタント</Heading> */}
 
-          <CalendarView
-            calendarHook={calendarHook}
-            dateRangeHook={dateRangeHook}
-            events={dummyEvents}
-          />
-
-          {showResults && (
-            <ResultsView
-              slots={dummySlots}
-              onCopy={copyToClipboard}
-              copied={copied}
+          <div className={styles.calendarContainer}>
+            <CalendarView
+              calendarHook={calendarHook}
+              dateRangeHook={dateRangeHook}
+              events={dummyEvents}
             />
-          )}
+          </div>
         </div>
       </div>
 
@@ -77,6 +71,16 @@ export const ScheduleContainer = () => {
         selectedRange={dateRangeHook.selectedRange}
         settings={settings}
         onSearch={handleSearch}
+      />
+
+      {/* 検索結果モーダル */}
+      <ResultsModal
+        isOpen={showResults}
+        onClose={() => setShowResults(false)}
+        slots={dummySlots}
+        outputFormat={settings.outputFormat}
+        onCopy={copyToClipboard}
+        copied={copied}
       />
     </div>
   );

@@ -6,6 +6,7 @@ export const useScheduleSettings = () => {
   const [interviewDuration, setInterviewDuration] = useState(60);
   const [startTime, setStartTime] = useState("09:00");
   const [endTime, setEndTime] = useState("18:00");
+  const [outputFormat, setOutputFormat] = useState("bullets");
 
   return {
     bufferBefore,
@@ -18,5 +19,7 @@ export const useScheduleSettings = () => {
     setStartTime,
     endTime,
     setEndTime,
+    outputFormat,
+    setOutputFormat,
   };
 };

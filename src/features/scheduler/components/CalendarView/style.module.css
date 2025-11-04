@@ -1,29 +1,34 @@
 .container {
   background-color: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  /* border: 1px solid #e5e7eb; */
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
+  overflow: hidden;
   box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .weekHeader {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
 }
 
 .weekDay {
   text-align: center;
   font-weight: 600;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 1rem 0.5rem;
   color: #4b5563;
+  border-right: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.weekDay:last-child {
+  border-right: none;
 }
 
 .sunday {
@@ -34,31 +39,15 @@
   color: #3b82f6;
 }
 
+.calendarGrid {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
 @media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .weekHeader {
-    gap: 0.25rem;
-  }
-
   .weekDay {
-    font-size: 0.875rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-}
-
-.weekHeader,
-.calendar {
-  min-width: 600px;
-}
-
-@media (max-width: 768px) {
-  .weekHeader,
-  .calendar {
-    min-width: 350px;
+    font-size: 0.75rem;
+    padding: 0.75rem 0.25rem;
   }
 }

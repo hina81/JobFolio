@@ -1,35 +1,46 @@
 /* style.module.css */
 .container {
-  min-height: 100vh;
-  background-color: #f9fafb; /* bg-gray-50 */
+  height: 100vh;
+  width: 100vw;
+  background-color: #f9fafb;
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .mainArea {
   flex: 1;
-  padding: 2rem; /* p-8 */
-  margin-right: 350px; /* サイドバーの幅分のマージン */
-  overflow-x: hidden; /* 横スクロールを無効化 */
-  max-height: 100vh; /* 画面の高さに制限 */
-  overflow-y: auto; /* 縦スクロールのみ許可 */
+  margin-right: 350px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .innerContainer {
-  max-width: calc(100vw - 350px - 4rem); /* サイドバー幅とパディングを考慮 */
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: 700; /* font-bold */
-  color: #1f2937; /* text-gray-800 */
-  margin-bottom: 2rem; /* mb-8 */
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* gap-3 */
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.calendarContainer {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .icon {
@@ -41,42 +52,26 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .mainArea {
     margin-right: 0;
-    max-height: calc(100vh - 400px); /* モバイル時はサイドバー分を引く */
-    padding: 1rem;
+    height: calc(100vh - 200px);
   }
 
   .innerContainer {
-    max-width: 100%;
+    padding: 0.5rem;
   }
 
   .heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-}
-
-/* カレンダーが画面からはみ出ないようにする */
-@media (max-width: 1200px) {
-  .mainArea {
-    padding: 1.5rem;
-  }
-
-  .innerContainer {
-    max-width: calc(100vw - 350px - 3rem);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
   }
 }
 
 @media (max-width: 1024px) {
   .mainArea {
-    margin-right: 300px; /* サイドバーを少し狭く */
-  }
-
-  .innerContainer {
-    max-width: calc(100vw - 300px - 3rem);
+    margin-right: 300px;
   }
 }
