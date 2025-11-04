@@ -1,0 +1,82 @@
+/* style.module.css */
+.container {
+  min-height: 100vh;
+  background-color: #f9fafb; /* bg-gray-50 */
+  display: flex;
+  position: relative;
+}
+
+.mainArea {
+  flex: 1;
+  padding: 2rem; /* p-8 */
+  margin-right: 350px; /* サイドバーの幅分のマージン */
+  overflow-x: hidden; /* 横スクロールを無効化 */
+  max-height: 100vh; /* 画面の高さに制限 */
+  overflow-y: auto; /* 縦スクロールのみ許可 */
+}
+
+.innerContainer {
+  max-width: calc(100vw - 350px - 4rem); /* サイドバー幅とパディングを考慮 */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.heading {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700; /* font-bold */
+  color: #1f2937; /* text-gray-800 */
+  margin-bottom: 2rem; /* mb-8 */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* gap-3 */
+}
+
+.icon {
+  width: 2rem; /* w-8 */
+  height: 2rem; /* h-8 */
+  color: #4f46e5; /* text-indigo-600 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .mainArea {
+    margin-right: 0;
+    max-height: calc(100vh - 400px); /* モバイル時はサイドバー分を引く */
+    padding: 1rem;
+  }
+
+  .innerContainer {
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* カレンダーが画面からはみ出ないようにする */
+@media (max-width: 1200px) {
+  .mainArea {
+    padding: 1.5rem;
+  }
+
+  .innerContainer {
+    max-width: calc(100vw - 350px - 3rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainArea {
+    margin-right: 300px; /* サイドバーを少し狭く */
+  }
+
+  .innerContainer {
+    max-width: calc(100vw - 300px - 3rem);
+  }
+}

@@ -1,0 +1,64 @@
+.container {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.weekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.weekDay {
+  text-align: center;
+  font-weight: 600;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+.sunday {
+  color: #ef4444;
+}
+
+.saturday {
+  color: #3b82f6;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .weekHeader {
+    gap: 0.25rem;
+  }
+
+  .weekDay {
+    font-size: 0.875rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+.weekHeader,
+.calendar {
+  min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .weekHeader,
+  .calendar {
+    min-width: 350px;
+  }
+}

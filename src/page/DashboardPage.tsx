@@ -11,6 +11,7 @@ import type { Job } from "../types/types";
 import { useJobs } from "../hooks/useJob";
 import { Sidebar } from "../features/sidebar/Sidebar";
 import { TableActions } from "../features/table/TableActions";
+import { LoadingCover } from "../components/Base/Loading";
 
 export const DashboardPage = () => {
   const { jobData, isLoading, updateStatus, removeJob } = useJobs();
@@ -50,9 +51,7 @@ export const DashboardPage = () => {
             <TableActions />
 
             {isLoading ? (
-              <div style={{ textAlign: "center", padding: "2rem" }}>
-                データを読み込み中...
-              </div>
+              <LoadingCover />
             ) : filteredJobData.length > 0 ? (
               <JobTable
                 jobs={filteredJobData}
