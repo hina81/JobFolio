@@ -1,4 +1,8 @@
-import type { CalendarEvents, UseCalendarReturn, UseDateRangeReturn } from "../../types";
+import type {
+  CalendarEvents,
+  UseCalendarReturn,
+  UseDateRangeReturn,
+} from "../../types";
 import { CalendarGrid } from "../CalendarGrid";
 import { CalendarHeader } from "../CalendarHeader";
 import styles from "./style.module.css";

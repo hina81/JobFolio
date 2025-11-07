@@ -1,4 +1,8 @@
-import type { CalendarData, CalendarEvents, UseDateRangeReturn } from "../../types";
+import type {
+  CalendarData,
+  CalendarEvents,
+  UseDateRangeReturn,
+} from "../../types";
 import { CalendarDay } from "../CalendarDay";
 import styles from "./style.module.css";
 

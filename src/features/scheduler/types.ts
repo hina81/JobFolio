@@ -43,7 +43,6 @@ export interface ScheduleSettings {
   bufferAfter: number;
   startTime: string;
   endTime: string;
-
 }
 
 export interface ScheduleSettingsWithActions extends ScheduleSettings {
@@ -70,4 +69,3 @@ export type UseDateRangeReturn = {
   isDateStart: (date: Date) => boolean;
   isDateEnd: (date: Date) => boolean;
 };
-
