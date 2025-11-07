@@ -51,6 +51,23 @@ export interface ScheduleSettingsWithActions extends ScheduleSettings {
   setBufferAfter: (value: number) => void;
   setStartTime: (value: string) => void;
   setEndTime: (value: string) => void;
-
 }
+
+// Hook return types
+export type UseCalendarReturn = {
+  year: number;
+  month: number;
+  daysInMonth: number;
+  startingDayOfWeek: number;
+  handlePrevMonth: () => void;
+  handleNextMonth: () => void;
+};
+
+export type UseDateRangeReturn = {
+  selectedRange: DateRange;
+  handleDateClick: (date: Date) => void;
+  isDateInRange: (date: Date) => boolean;
+  isDateStart: (date: Date) => boolean;
+  isDateEnd: (date: Date) => boolean;
+};
 

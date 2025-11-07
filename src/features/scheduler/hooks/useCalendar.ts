@@ -1,9 +1,10 @@
 import { useState } from "react";
+import type { UseCalendarReturn } from "../types";
 
-export const useCalendar = (initialDate = new Date()) => {
+export const useCalendar = (initialDate = new Date()): UseCalendarReturn => {
   const [currentMonth, setCurrentMonth] = useState(initialDate);
 
-  const getDaysInMonth = (date) => {
+  const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear();
     const month = date.getMonth();
     const firstDay = new Date(year, month, 1);
@@ -25,7 +26,6 @@ export const useCalendar = (initialDate = new Date()) => {
   };
 
   return {
-    currentMonth,
     ...getDaysInMonth(currentMonth),
     handlePrevMonth,
     handleNextMonth,
