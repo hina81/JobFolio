@@ -1,4 +1,4 @@
-import { Stack, Text, FaClockIcon, Input, Button } from "smarthr-ui";
+import { Stack, Text, Heading, FaClockIcon, Input, Button } from "smarthr-ui";
 import type { DateRange } from "../../types";
 import { useScheduleSettings } from "../../hooks/useScheduleSettings";
 import styles from "./style.module.css";
@@ -19,8 +19,6 @@ export const ScheduleSidebar = ({
     setBufferBefore,
     bufferAfter,
     setBufferAfter,
-    interviewDuration,
-    setInterviewDuration,
     startTime,
     setStartTime,
     endTime,
@@ -30,6 +28,12 @@ export const ScheduleSidebar = ({
   return (
     <div className={styles.container}>
       <Stack gap={2}>
+        {/* ヘッダー */}
+        <div className={styles.header}>
+          <Heading tag="h2">JobFolio</Heading>
+          <Text className={styles.appDescription}>日程調整アシスタント</Text>
+        </div>
+
         {/* 選択範囲表示 */}
         <div className={styles.selectedRange}>
           <Text className={styles.rangeTitle}>選択範囲</Text>
@@ -37,9 +41,7 @@ export const ScheduleSidebar = ({
             <div className={styles.rangeContent}>
               {selectedRange.start.toLocaleDateString("ja-JP")}
               {selectedRange.end && (
-                <>
-                  <br />〜 {selectedRange.end.toLocaleDateString("ja-JP")}
-                </>
+                <> - {selectedRange.end.toLocaleDateString("ja-JP")}</>
               )}
             </div>
           ) : (
@@ -112,26 +114,6 @@ export const ScheduleSidebar = ({
                     setBufferAfter(parseInt(e.target.value) || 0)
                   }
                   min="0"
-                  step="15"
-                  className={styles.input}
-                />
-                <span className={styles.numberUnit}>分</span>
-              </div>
-            </div>
-
-            <div className={styles.formSection}>
-              <Text className={styles.label}>
-                <FaClockIcon className={styles.labelIcon} />
-                面接時間
-              </Text>
-              <div className={styles.numberInputContainer}>
-                <Input
-                  type="number"
-                  value={interviewDuration.toString()}
-                  onChange={(e) =>
-                    setInterviewDuration(parseInt(e.target.value) || 15)
-                  }
-                  min="15"
                   step="15"
                   className={styles.input}
                 />

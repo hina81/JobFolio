@@ -1,21 +1,28 @@
 .container {
-  width: 350px;
+  width: 280px;
   height: 100vh;
   background-color: white;
-  border-left: 1px solid #e9ecef;
-  padding: 1.5rem 1rem;
+  border-right: 1px solid #e9ecef;
+  padding: 16px;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   overflow-y: auto;
   z-index: 10;
 }
 
+.header {
+  margin-bottom: 1rem;
+}
+
 .title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #212529;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+.appDescription {
+  color: #6c757d;
+  font-size: 0.9rem;
 }
 
 .sectionTitle {
@@ -160,12 +167,21 @@
   .container {
     width: 100%;
     position: relative;
-    height: auto;
-    border-left: none;
-    border-top: 1px solid #e9ecef;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    left: auto;
   }
 
   .title {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+  }
+
+  .header {
+    margin-bottom: 0.75rem;
+  }
+
+  .appDescription {
+    font-size: 0.8rem;
   }
 }

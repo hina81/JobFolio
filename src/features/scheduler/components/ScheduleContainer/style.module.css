@@ -12,7 +12,7 @@
 
 .mainArea {
   flex: 1;
-  margin-right: 350px;
+  margin-left: 280px;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -52,11 +52,11 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .mainArea {
-    margin-right: 0;
+    margin-left: 0;
     height: calc(100vh - 200px);
   }
 
@@ -72,6 +72,6 @@
 
 @media (max-width: 1024px) {
   .mainArea {
-    margin-right: 300px;
+    margin-left: 280px;
   }
 }

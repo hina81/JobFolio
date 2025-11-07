@@ -41,7 +41,6 @@ export interface DateRangeWithActions {
 export interface ScheduleSettings {
   bufferBefore: number;
   bufferAfter: number;
-  interviewDuration: number;
   startTime: string;
   endTime: string;
 
@@ -50,7 +49,6 @@ export interface ScheduleSettings {
 export interface ScheduleSettingsWithActions extends ScheduleSettings {
   setBufferBefore: (value: number) => void;
   setBufferAfter: (value: number) => void;
-  setInterviewDuration: (value: number) => void;
   setStartTime: (value: string) => void;
   setEndTime: (value: string) => void;
 

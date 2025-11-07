@@ -51,11 +51,16 @@ export const ScheduleContainer = () => {
 
   return (
     <div className={styles.container}>
+      {/* 左サイドバー */}
+      <ScheduleSidebar
+        selectedRange={dateRangeHook.selectedRange}
+        settings={settings}
+        onSearch={handleSearch}
+      />
+
       {/* メインカレンダーエリア */}
       <div className={styles.mainArea}>
         <div className={styles.innerContainer}>
-          {/* <Heading tag="h1">日程調整アシスタント</Heading> */}
-
           <div className={styles.calendarContainer}>
             <CalendarView
               calendarHook={calendarHook}
@@ -65,13 +70,6 @@ export const ScheduleContainer = () => {
           </div>
         </div>
       </div>
-
-      {/* 右サイドバー */}
-      <ScheduleSidebar
-        selectedRange={dateRangeHook.selectedRange}
-        settings={settings}
-        onSearch={handleSearch}
-      />
 
       {/* 検索結果モーダル */}
       <ResultsModal
